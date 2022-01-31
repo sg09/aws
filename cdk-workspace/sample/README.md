@@ -1,5 +1,5 @@
 
-# Welcome to your CDK Python project!
+# Welcome to AB CDK Python project!
 
 You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`sample_stack`)
 which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
