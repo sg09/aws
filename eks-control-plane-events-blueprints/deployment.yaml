@@ -16,5 +16,5 @@ spec:
     spec:
       containers:
       - name: cp-events
-        image: ACCOUNTID.dkr.ecr.REGION.amazonaws.com:TAG
+        image: ACCOUNTID.dkr.ecr.REGION.amazonaws.com/ECR_REPO_URI:TAG
        
