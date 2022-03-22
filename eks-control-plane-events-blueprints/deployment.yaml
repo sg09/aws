@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cp-event-deployment
+  labels:
+    app: cp-events
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cp-events
+  template:
+    metadata:
+      labels:
+        app: cp-events
+    spec:
+      containers:
+      - name: cp-events
+        image: ACCOUNTID.dkr.ecr.REGION.amazonaws.com:TAG
+       
