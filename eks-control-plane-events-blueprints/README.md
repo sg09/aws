@@ -15,5 +15,6 @@ For this walkthrough, you should have the following prerequisites:
 
 ## Solution flow
 
-![This is a alt text.](/image/sample.png "This is a sample image.")
+<img width="639" alt="image" src="https://user-images.githubusercontent.com/1725781/159606567-abc3273c-2803-40a3-ac3b-dd4bbbd67334.png">
+
 
