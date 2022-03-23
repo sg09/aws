@@ -18,3 +18,26 @@ For this walkthrough, you should have the following prerequisites:
 <img width="639" alt="image" src="https://user-images.githubusercontent.com/1725781/159606567-abc3273c-2803-40a3-ac3b-dd4bbbd67334.png">
 
 
+
+## Files
+
+| Directory     | Contents.     |Target|
+| ------------- |:-------------:|:--------:|
+| app.          | Files for containerization     |ECR|
+| k8_utils      | Files for EKS data planes  |EKS |
+
+### Files inside app
+
+| File     | Contents.     |
+| ------------- |:-------------:|
+| Dockerfile.          | File for containerization     |
+| requirements.txt      | Python dependency |
+| event_loop.py | Control plane event blueprint|
+
+
+### Files inside k8_utils
+
+| File     | Contents.     |
+| ------------- |:-------------:|
+| deployment.yaml.          | File for deploying above app to k8s    |
+| fluent_bit.yaml      | Container insight with CloudWatch |
