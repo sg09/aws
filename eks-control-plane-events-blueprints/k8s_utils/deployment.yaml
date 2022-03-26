@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: cpe
   labels:
-    app: nginx
+    app: cpe
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: cpe
+      app: cpe        
   template:
     metadata:
       labels:
