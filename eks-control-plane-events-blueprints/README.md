@@ -21,23 +21,23 @@ For this walkthrough, you should have the following prerequisites:
 
 ## Files
 
-| Directory     | Contents.     |Target|
+| Directory     | Contents    |Target|
 | ------------- |:-------------:|:--------:|
-| app.          | Files for containerization     |ECR|
+| app          | Files for containerization     |ECR|
 | k8_utils      | Files for EKS data planes  |EKS |
 
 ### Files inside app
 
-| File     | Contents.     |
+| File     | Contents     |
 | ------------- |:-------------:|
-| Dockerfile.          | File for containerization     |
+| Dockerfile          | File for containerization     |
 | requirements.txt      | Python dependency |
 | event_loop.py | Control plane event blueprint|
 
 
 ### Files inside k8_utils
 
-| File     | Contents.     |
+| File     | Contents     |
 | ------------- |:-------------:|
-| deployment.yaml.          | File for deploying above app to k8s    |
+| deployment.yaml          | File for deploying above app to k8s    |
 | fluent_bit.yaml      | Container insight with CloudWatch |
