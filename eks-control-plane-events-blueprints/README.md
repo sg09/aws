@@ -32,7 +32,7 @@ For this walkthrough, you should have the following prerequisites:
 | ------------- |:-------------:|
 | Dockerfile          | File for containerization     |
 | requirements.txt      | Python dependency |
-| event_loop.py | Control plane event blueprint|
+| event_watcher.py | Control plane event blueprint|
 
 
 ### Files inside k8_utils
