@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: cpe
-        image: $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO
+        image: public.ecr.aws/m8u2y2m7/eks-event-watcher:latest
