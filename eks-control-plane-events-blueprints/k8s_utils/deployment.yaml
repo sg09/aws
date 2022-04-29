@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: cpe
-        image: ACCOUNTID.dkr.ecr.us-east-1.amazonaws.com/ECR_REPO_URI:TAG
+        image: $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO
