@@ -24,13 +24,13 @@ For this walkthrough, you should have the following prerequisites:
 
 #### Steps to create custom image:
 
-Below steps are required, if you want to customize the events provided in the event_watecher.py
+Below steps are required, if you want to customize various events provided in the event_watecher.py, conatainerize it, push to AWS ECR and  use that in your deployment.
+
 ### (1) Set environment variables
 ```sh
-export EKS_CLUSTER_NAME=controlplane-events-cluster
 export AWS_REGION=<region>
 export ACCOUNTID=<accountId>
-export ECR_REPO=cp-events-repo
+export ECR_REPO=<repo_name>
 ```
 
 ### (2) Create an AWS Elastic Container Registry (ECR) repository:
@@ -68,7 +68,12 @@ Below command pushes the created container image to ECR repository (created in s
 ```sh
  docker push $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO
 ```
+### (5) Update the container image to Deployment yaml :
 
+Update the container image in the deployment yaml like below
+```sh
+ image: $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO
+```
 
 ## Files
 
