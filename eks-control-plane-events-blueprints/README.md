@@ -19,6 +19,57 @@ For this walkthrough, you should have the following prerequisites:
 
 
 
+## Steps to create custom image (optional)
+
+
+#### Steps to create custom image:
+
+Below steps are required, if you want to customize the events provided in the event_watecher.py
+### (1) Set environment variables
+```sh
+export EKS_CLUSTER_NAME=controlplane-events-cluster
+export AWS_REGION=<region>
+export ACCOUNTID=<accountId>
+export ECR_REPO=cp-events-repo
+```
+
+### (2) Create an AWS Elastic Container Registry (ECR) repository:
+Lets create a repository inside Elastic Container Registry (ECR) as the placeholder to store the container images. 
+
+```sh
+ aws ecr create-repository --repository-name=$ECR_REPO
+```
+Once the ECR repository is created, log in, so that we are ready to push the container images.
+
+```sh
+aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com
+```
+
+ 
+### (3) Create the control-planes-events application using the source code provided in this blog, containerize it with Docker
+
+Lets create a directory to store the source code, call it as “control-plane-events-app” and get inside the folder.
+
+mkdir control-plane-events-app && cd $_
+
+```sh
+ mkdir control-plane-events-app && cd $_
+```
+
+Change the app/event_watcher.py script to your needs and use the docker build command to containerize it
+```sh
+ docker image build -t $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO .
+```
+Above command takes around 2-5 minutes to complete
+
+### (4) Push the created container image to ECR repository:
+
+Below command pushes the created container image to ECR repository (created in step #1)
+```sh
+ docker push $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO
+```
+
+
 ## Files
 
 | Directory     | Contents    |Target|
@@ -40,4 +91,5 @@ For this walkthrough, you should have the following prerequisites:
 | File     | Contents     |
 | ------------- |:-------------:|
 | deployment.yaml          | File for deploying above app to k8s    |
-| fluent_bit.yaml      | Container insight with CloudWatch |
+| cluster_role.yaml      | To create cluster role |
+| cluster_role_binding.yaml      | To create cluster role binding |
