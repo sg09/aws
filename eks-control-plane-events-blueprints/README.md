@@ -21,9 +21,6 @@ For this walkthrough, you should have the following prerequisites:
 
 ## Steps to create custom image (optional)
 
-
-#### Steps to create custom image:
-
 Below steps are required, if you want to customize various events provided in the event_watecher.py, conatainerize it, push to AWS ECR and  use that in your deployment.
 
 ### (1) Set environment variables
@@ -46,31 +43,31 @@ aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --
 ```
 
  
-### (3) Create the control-planes-events application using the source code provided in this blog, containerize it with Docker
+### (3) Create the control-planes-events application using the source code provided, containerize it with Docker
 
 Lets create a directory to store the source code, call it as “control-plane-events-app” and get inside the folder.
-
-mkdir control-plane-events-app && cd $_
 
 ```sh
  mkdir control-plane-events-app && cd $_
 ```
 
 Change the app/event_watcher.py script to your needs and use the docker build command to containerize it
+
 ```sh
  docker image build -t $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO .
 ```
-Above command takes around 2-5 minutes to complete
 
-### (4) Push the created container image to ECR repository:
+### (4) Push the created container image to your ECR repository:
 
-Below command pushes the created container image to ECR repository (created in step #1)
+Below command pushes the created container image to ECR repository (created in step #2)
+
 ```sh
  docker push $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO
 ```
 ### (5) Update the container image to Deployment yaml :
 
 Update the container image in the deployment yaml like below
+
 ```sh
  image: $ACCOUNTID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO
 ```
@@ -88,7 +85,7 @@ Update the container image in the deployment yaml like below
 | ------------- |:-------------:|
 | Dockerfile          | File for containerization     |
 | requirements.txt      | Python dependency |
-| event_watcher.py | Control plane event blueprint|
+| event_watcher.py | Control plane events blueprint script|
 
 
 ### Files inside k8_utils
